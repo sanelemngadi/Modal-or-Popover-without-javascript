@@ -1,0 +1,120 @@
+*,
+*::after,
+*::before
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color:#D1D1D1;
+    --secondary-color:#2C3333;
+    --tertiary-color:#DA1212;
+
+    --border-primary: 1px solid var(--primary-color);
+    --border-secondary: 1px solid var(--secondary-color);
+    --border-tertiary: 1px solid var(--tertiary-color);
+}
+
+body{
+    background-color: var(--primary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+.container{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
+
+.btn{
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.btn:active{
+    transform: scale(0.95);
+}
+
+.btn-primary{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn-secondary{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-tertiary{
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+}
+
+.modal{
+    width: 80%;
+    border: var(--border-secondary);
+    padding: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: var(--primary-color);
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.modal__header,
+.modal__text{
+    text-align: center;
+}
+
+.modal__buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    transform: scale(0);
+    transition: all 0.5s 0.1s ease-in-out;
+}
+
+#toggle-modal:checked ~ .overlay{
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+#toggle-modal:checked ~ .overlay .modal{
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+#toggle-modal{
+    display: none;
+}
+
+@media only screen and (min-width:767px){
+    .modal{
+        width: 40%;
+    }
+}
